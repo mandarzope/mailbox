@@ -1,0 +1,81 @@
+{
+  "name": "mailbox",
+  "version": "1.0.0",
+  "description": "Mailbox for everyone",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config client/webpack/dev.client.ts --mode development --color",
+    "build:client:dev": "rimraf dist/client && NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config client/webpack/dev.client.ts --mode development --color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mandarzope/mailbox.git"
+  },
+  "keywords": [
+    "ses",
+    "mailbox"
+  ],
+  "author": "Mandar Zope",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mandarzope/mailbox/issues"
+  },
+  "homepage": "https://github.com/mandarzope/mailbox#readme",
+  "dependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-loadable": "^5.5.1",
+    "@types/react-redux": "^7.0.8",
+    "@types/react-router": "^5.0.0",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/uuid": "^3.4.4",
+    "classnames": "^2.2.6",
+    "eventemitter3": "^3.1.2",
+    "history": "^4.9.0",
+    "query-string": "^6.5.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.0.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/redux-devtools": "^3.0.46",
+    "@types/redux-devtools-dock-monitor": "^1.1.33",
+    "@types/redux-devtools-log-monitor": "^1.0.34",
+    "@types/webpack": "^4.4.31",
+    "@types/webpack-dev-server": "^3.1.5",
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "handlebars": "^4.1.2",
+    "handlebars-loader": "^1.7.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "ignore-loader": "^0.1.2",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.12.0",
+    "raw-loader": "^2.0.0",
+    "redux-devtools": "^3.5.0",
+    "redux-devtools-dock-monitor": "^1.1.3",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-devtools-log-monitor": "^1.4.0",
+    "rimraf": "^2.6.3",
+    "sass-loader": "^7.1.0",
+    "terser-webpack-plugin": "^1.2.3",
+    "ts-loader": "^6.0.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
+  }
+}

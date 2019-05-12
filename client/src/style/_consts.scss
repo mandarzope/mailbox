@@ -1,0 +1,30 @@
+$breakpoint-small: 540px;
+$breakpoint-large: 960px;
+
+$grid-breakpoints: (xs: 0,
+sm: $breakpoint-small,
+lg: $breakpoint-large);
+
+$header-height: 80px;
+$left-width: 220px;
+
+$primary: #75c28c;
+$light:#eff1f8;
+$theme-colors: ("primary": $primary,
+"light":$light);
+
+$light-bg-border-color: rgba(0, 0, 0, 0.05);
+
+
+$dark-bg-font-color: rgba(255, 255, 255, 0.9);
+$light-bg-font-color-dark: rgba(0, 0, 0, 0.7);
+$light-bg-font-color-gray: rgba(0, 0, 0, 0.5);
+$light-bg-font-color-medium: rgba(0, 0, 0, 0.35);
+$light-bg-font-color-light: rgba(0, 0, 0, 0.2);
+
+
+$shadow-lg: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+0 5px 15px 0 rgba(0, 0, 0, 0.08);
+
+$shadow-lg-right: -30px 15px 30px 0 rgba(0, 0, 0, 0.11),
+0 5px 15px 0 rgba(0, 0, 0, 0.08);
