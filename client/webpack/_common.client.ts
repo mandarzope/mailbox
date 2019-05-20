@@ -15,7 +15,7 @@ export default {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
                 options: {
-                    configFile: 'tsconfig.webpack.client.json',
+                    configFile: 'client/tsconfig.webpack.client.json',
                     happyPackMode: true,
                     transpileOnly: true
                 },

@@ -5,8 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "test": "npm run test",
-    "start": "NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config client/webpack/dev.client.ts --mode development --color",
-    "build:client:dev": "rimraf dist/client && NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config client/webpack/dev.client.ts --mode development --color"
+    "start": "NODE_ENV=development TS_NODE_PROJECT=\"client/tsconfig.webpack.json\" webpack-dev-server --config client/webpack/dev.client.ts --mode development --color",
+    "build:client:dev": "rimraf dist/client && NODE_ENV=development TS_NODE_PROJECT=\"client/tsconfig.webpack.json\" webpack --config client/webpack/dev.client.ts --mode development --color"
   },
   "repository": {
     "type": "git",
