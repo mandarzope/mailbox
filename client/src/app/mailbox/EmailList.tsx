@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import uuid from 'uuid/v1'
 
 import EmailListItem from './EmailListItem';
+import { Loading } from '../App';
 let date = new Date();
 let date1 = new Date();
 date1.setDate(date1.getDate() - 1);
@@ -58,9 +59,31 @@ const TempList = [
     }
 ]
 
+const getMessages = () => new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(TempList)
+    }, 1000)
+})
+
 
 export default ({
-
-}) => (<div className='email-list'>
-    {TempList.map((email, i) => <EmailListItem {...email} key={i} />)}
-</div>)
+    messageId = null,
+    type
+}) => {
+    const [[messages, loading], loadMessages] = useState([[], true])
+    useEffect(() => {
+        loadMessages([[], true])
+        getMessages()
+            .then((d: any[]) => {
+                loadMessages([d, false])
+            })
+    }, [type])
+    if (loading) return Loading()
+    return (<div className='email-list'>
+        {messages.map((email, i) => <EmailListItem
+            selected={email.messageId == messageId}
+            {...email}
+            key={i
+            } />)}
+    </div>)
+}

@@ -8,10 +8,12 @@ export default ({
     subject,
     body,
     isRead,
+    selected,
     messageId,
     ts
 }) => (<Link to={`/inbox/${messageId}`} className={cn('email-list-item', {
-    isRead: !isRead
+    isRead: !isRead,
+    selected
 })}>
     <div className='ts'>{ts}</div>
     <div className='label'></div>

@@ -1,0 +1,41 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "AWS CloudFormation sample template that contains a single Lambda function behind an API Gateway",
+    "Resources": {
+        "IAMRoleLambdaAccessDynamoES": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ec2.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+                    "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+                ],
+                "Path": "/",
+                "RoleName": "LAMNDA_ACCESS_DYNAMO_ES"
+            }
+        },
+        "MailFetchApi": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+                "Name": "Mail Fetch API",
+                "Description": "API used for Fetching mails",
+                "FailOnWarnings": true
+            }
+        }
+    }
+}

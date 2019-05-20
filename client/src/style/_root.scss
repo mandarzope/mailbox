@@ -84,3 +84,41 @@ svg,
 video {
     vertical-align: middle;
 }
+
+/* Icons
+*/
+.icon {
+    stroke: $primary;
+    height: 1rem;
+    width: 1rem;
+}
+
+.x16 {
+    height: 1rem;
+    width: 1rem;
+}
+
+.x20 {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.x24 {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.x32 {
+    height: 2rem;
+    width: 2rem;
+}
+
+.x48 {
+    height: 3rem;
+    width: 3rem;
+}
+
+.x64 {
+    height: 4rem;
+    width: 4rem;
+}

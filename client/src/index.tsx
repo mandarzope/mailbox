@@ -3,9 +3,7 @@ import * as ReactDOM from 'react-dom';
 import App from './app/App';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
-// import { Router } from 'react-router';
-import { HashRouter } from 'react-router-dom';
-import Router from './Router';
+import HashRouter from './HashRouter';
 
 
 const toINR = function (...args) {
@@ -16,9 +14,9 @@ Number.prototype['toINR'] = toINR;
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={history}>
+        <HashRouter history={history}>
             <App />
-        </Router>
+        </HashRouter>
     </Provider>,
     document.getElementById("root")
 );

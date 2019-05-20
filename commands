@@ -1,0 +1,2 @@
+aws cloudformation update-stack --stack-name mailapi --template-body file://serverless/serverless.json --profile=mailbox --capabilities=CAPABILITY_NAMED_IAM
+aws cloudformation create-stack --stack-name mailapi --template-body file://serverless/serverless.json
