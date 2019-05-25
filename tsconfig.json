@@ -21,9 +21,9 @@
     },
     "exclude": [
         "node_modules",
-        "**/code_base/src/**/*.spec.ts"
+        "**/serverless/lambda/**/*.spec.ts"
     ],
     "include": [
-        "**/code_base/src/**/*.ts"
+        "**/serverless/lambda/**/*.ts"
     ]
 }

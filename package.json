@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run test",
     "start": "NODE_ENV=development TS_NODE_PROJECT=\"client/tsconfig.webpack.json\" webpack-dev-server --config client/webpack/dev.client.ts --mode development --color",
-    "build:client:dev": "rimraf dist/client && NODE_ENV=development TS_NODE_PROJECT=\"client/tsconfig.webpack.json\" webpack --config client/webpack/dev.client.ts --mode development --color"
+    "build:client:dev": "rimraf dist/client && NODE_ENV=development TS_NODE_PROJECT=\"client/tsconfig.webpack.json\" webpack --config client/webpack/dev.client.ts --mode development --color",
+    "build:serverless": "NODE_ENV=production rollup --config"
   },
   "repository": {
     "type": "git",
@@ -47,11 +48,13 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "@types/redux-devtools": "^3.0.46",
     "@types/redux-devtools-dock-monitor": "^1.1.33",
     "@types/redux-devtools-log-monitor": "^1.0.34",
     "@types/webpack": "^4.4.31",
     "@types/webpack-dev-server": "^3.1.5",
+    "aws-sdk": "^2.461.0",
     "copy-webpack-plugin": "^5.0.2",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
@@ -68,6 +71,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-devtools-log-monitor": "^1.4.0",
     "rimraf": "^2.6.3",
+    "rollup": "^1.10.1",
+    "rollup-plugin-typescript": "^1.0.1",
     "sass-loader": "^7.1.0",
     "terser-webpack-plugin": "^1.2.3",
     "ts-loader": "^6.0.0",

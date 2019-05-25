@@ -1,0 +1,15 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "AWS CloudFormation sample template that contains a single Lambda function behind an API Gateway",
+    "Resources": {
+        "ServerLessLambda": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Sub": "sam-${AWS::Region}-${AWS::AccountId}"
+                },
+                "AccessControl": "PublicReadWrite"
+            }
+        }
+    }
+}
