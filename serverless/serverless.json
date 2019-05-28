@@ -211,18 +211,54 @@
                 "MemorySize": 128
             }
         },
-        "SesVerificationRecords": {
-            "Type": "AWS::CloudFormation::CustomResource",
+        "EmailRecordsTableDynamodb": {
+            "Type": "AWS::DynamoDB::Table",
             "Properties": {
-                "ServiceToken": {
-                    "Fn::GetAtt": [
-                        "SesVerificationRecordsLambda",
-                        "Arn"
-                    ]
-                },
-                "HostedZoneId": {
-                    "Ref": "UnbeatableDNS"
-                }
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "email_id",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "receiver_id",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "receive_date",
+                        "AttributeType": "S"
+                    }
+                ],
+                "BillingMode": "PROVISIONED",
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "email_by_receiver_id",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "receiver_id",
+                                "KeyType": "HASH"
+                            },
+                            {
+                                "AttributeName": "receive_date",
+                                "KeyType": "RANGE"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "INCLUDE",
+                            "NonKeyAttributes": ["email_id"]
+                        }
+                    }
+                ],
+                "KeySchema": [
+                    {
+                        "AttributeName": "email_id",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "receiver_id",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "TableName": "emails"
             }
         }
     }
