@@ -7,8 +7,6 @@
 # sharing this value, or have their own with different values.
 STACK_NAME="mailbox"
 # The name of an S3 bucket on your account to hold deployment artifacts.
-AWS_ACCESS_KEY_ID="AKIA3Q5VXRQ3GWVYAB6M"
-AWS_SECRET_ACCESS_KEY="J+3QdV51tSj9MFLrybMgjYzUtKi9GwhxtAoICFst"
 # REGION can only be from 
 # us-east-1
 # us-west-2
@@ -67,13 +65,21 @@ for d in */ ; do
 done
 cd "$DIR"
 
-STACKS=$(aws cloudformation describe-stacks --stack-name mailapi --profile=$AWS_PROFILE_NAME --output text);
-
-if [[ "$STACKS" =~ ^STACKS.* ]];  
+STACKS=$(aws cloudformation describe-stacks --stack-name mailapi --profile=$AWS_PROFILE_NAME --query 'Stacks[*].[StackName, StackStatus]' --output text);
+if [[ "$STACKS" =~ ^mailapi* ]];  
 then
-    aws cloudformation update-stack --stack-name mailapi --template-body file://serverless/serverless.json --profile=$AWS_PROFILE_NAME
-    aws cloudformation wait stack-update-complete  --stack-name mailapi   --profile $AWS_PROFILE_NAME
+    STACK_STATUS=$(echo $STACKS | cut -f2 -d ' ')
+    if [[ "$STACK_STATUS" == "ROLLBACK_COMPLETE" ]];
+    then
+        aws cloudformation delete-stack --stack-name mailapi --profile=$AWS_PROFILE_NAME
+        aws cloudformation wait stack-delete-complete --stack-name mailapi  --profile $AWS_PROFILE_NAME
+        aws cloudformation create-stack --stack-name mailapi --template-body file://serverless/serverless.json  --profile $AWS_PROFILE_NAME --capabilities CAPABILITY_NAMED_IAM
+        aws cloudformation wait stack-create-complete --stack-name mailapi  --profile $AWS_PROFILE_NAME
+    else
+        aws cloudformation update-stack --stack-name mailapi --template-body file://serverless/serverless.json --profile=$AWS_PROFILE_NAME
+        aws cloudformation wait stack-update-complete  --stack-name mailapi   --profile $AWS_PROFILE_NAME
+    fi
 else
-    aws cloudformation create-stack --stack-name mailapi --template-body file://serverless/serverless.json  --profile $AWS_PROFILE_NAME
-    aws cloudformation wait stack-create-complete  --stack-name mailapi  --profile $AWS_PROFILE_NAME
+    aws cloudformation create-stack --stack-name mailapi --template-body file://serverless/serverless.json  --profile $AWS_PROFILE_NAME --capabilities CAPABILITY_NAMED_IAM
+    aws cloudformation wait stack-create-complete --stack-name mailapi  --profile $AWS_PROFILE_NAME
 fi
