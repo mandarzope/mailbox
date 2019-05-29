@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+#AWS Credentials
+credentials.csv
+package-lock.json

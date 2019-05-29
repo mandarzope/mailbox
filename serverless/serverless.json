@@ -245,6 +245,10 @@
                         "Projection": {
                             "ProjectionType": "INCLUDE",
                             "NonKeyAttributes": ["email_id"]
+                        },
+                        "ProvisionedThroughput": {
+                            "ReadCapacityUnits": 5,
+                            "WriteCapacityUnits": 5
                         }
                     }
                 ],
@@ -258,7 +262,11 @@
                         "KeyType": "RANGE"
                     }
                 ],
-                "TableName": "emails"
+                "TableName": "emails",
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 1,
+                    "WriteCapacityUnits": 1
+                }
             }
         }
     }
