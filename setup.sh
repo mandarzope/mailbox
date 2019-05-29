@@ -7,8 +7,6 @@
 # sharing this value, or have their own with different values.
 STACK_NAME="mailbox"
 # The name of an S3 bucket on your account to hold deployment artifacts.
-# AWS_ACCESS_KEY_ID="AKIA3Q5VXRQ3GWVYAB6M"
-# AWS_SECRET_ACCESS_KEY="J+3QdV51tSj9MFLrybMgjYzUtKi9GwhxtAoICFst"
 # REGION can only be from 
 # us-east-1
 # us-west-2
